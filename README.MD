@@ -3,6 +3,10 @@ C++ I2C LCD Backpack library
 
 A simple, basic library for interfacing with an I2C LCD "backpack".
 
+Code standard: C++17
+
+This library is part of my IPASS end project, for the first year of my HBO-ICT study at Hogeschool Utrecht in 2019.
+
 Dependencies
 -----
 For abstraction of communication with microcontrollers, this library uses [hwlib](http://github.com/wovo/hwlib) and its bitbanged I2C implementation.
