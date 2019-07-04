@@ -5,7 +5,7 @@ A simple, basic library for interfacing with an I2C LCD "backpack".
 
 Dependencies
 -----
-For abstraction of communication with microcontrollers, this library uses [hwlib](http://github.com/wovo/hwlib) and it's bitbanged I2C implementation.
+For abstraction of communication with microcontrollers, this library uses [hwlib](http://github.com/wovo/hwlib) and its bitbanged I2C implementation.
 
 The included makefile is built for [BMPTK](http://github.com/wovo/bmptk) although this is not necessary.
 
@@ -16,7 +16,8 @@ Installation
 
 Building with BMPTK
 ----
-
+- Make sure to set the TARGET before including *Makefile.inc*
+- Include *Makefile.inc*
 
 
 Building without BMPTK
