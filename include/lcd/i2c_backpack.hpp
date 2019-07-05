@@ -109,7 +109,8 @@ namespace lcd {
         /// Number of the row this module is currently writing on
         uint8_t row = 0;
         /// Character buffer
-        char buffer[2][16] = {};
+        char buffer[2][16] = {{' '},
+                              {' '}};
         /// Current writing positions in character buffer
         uint8_t positions[2] = {0};
     public:
@@ -163,6 +164,16 @@ namespace lcd {
          */
         void set_row(uint8_t currentRow);
 
+        /**
+         * \brief Flush the buffer eq. display buffer to screen
+         */
+        void flush(void) override;
+
+        /**
+         * \brief Clear current buffer (eq. Fill with spaces)
+         */
+        void clear_buffer();
+
     private:
         /**
          * \brief Put a single character into the buffer, used for the ostream implementation
@@ -172,10 +183,7 @@ namespace lcd {
         void putc(char c) override;
 
     public:
-        /**
-         * \brief Flush the buffer eq. display buffer to screen
-         */
-        void flush(void) override;
+
     };
 
     /**

@@ -13,6 +13,7 @@ lcd::i2c_backpack::i2c_backpack(hwlib::i2c_bus &bus, uint8_t rows, uint8_t cols,
                                                                                                     rows(rows),
                                                                                                     cols(cols),
                                                                                                     address(address) {
+    clear_buffer();
     write(0x03);
     write(0x03);
     write(0x03);
@@ -64,7 +65,6 @@ void lcd::i2c_backpack::clear() {
 
 void lcd::i2c_backpack::set_row(uint8_t currentRow) {
     write(BASE::RETURNHOME);
-    flush();
     row = currentRow;
 }
 
@@ -77,8 +77,12 @@ void lcd::i2c_backpack::putc(char c) {
 
 void lcd::i2c_backpack::flush(void) {
 //    write(BASE::CLEARDISPLAY);
-    display_string(buffer[0], positions[0], 0);
-    display_string(buffer[1], positions[1], 1);
+    display_string(buffer[0], cols, 0);
+    display_string(buffer[1], cols, 1);
+    clear_buffer();
+}
+
+void lcd::i2c_backpack::clear_buffer() {
     for (uint8_t i = 0; i < cols; i++) {
         buffer[0][i] = ' ';
         buffer[1][i] = ' ';
